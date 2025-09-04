@@ -1,0 +1,666 @@
+/* style.css */
+/* ================= 全局可调参数 ================= */
+/* 修改以下数值即可调整元素 */
+:root {
+    /* 当屏幕宽度小于等于 600px 时（通常是手机）应用的样式 */
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+  .container {
+    width: 100%;
+  }
+}
+
+/* 当屏幕宽度大于 600px 且小于等于 1024px 时（通常是平板）应用的样式 */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+  .container {
+    width: 90%;
+    max-width: 750px;
+  }
+}
+
+/* 当屏幕宽度大于 1024px 时（通常是桌面电脑）应用的样式 */
+@media only screen and (min-width: 1025px) {
+  body {
+    font-size: 18px;
+  }
+  .container {
+    width: 80%;
+    max-width: 1200px;
+  } }
+
+    /* 容器尺寸 */
+    --container-width: 1200px;  /* 页面主宽度 */
+    --header-height: 200px;     /* 头部高度 */
+
+    /* 主标题 */
+    --title-width: 600px;       /* 标题图片宽度 */
+    --title-left: 0px;        /* 标题左偏移 */
+    --title-top: 10px;         /* 标题上偏移 */
+
+    /* 云朵系统 */
+    --cloud-large-w: 276px;     /* 大云宽度 */
+    --cloud-large-right: 200px;   /* 大云右偏移 */
+    --cloud-large-top: 70px;   /* 大云顶部位置 */
+    
+    --cloud-medium-w: 170px;    /* 中云宽度 */
+    --cloud-medium-right: 0;    /* 中云右偏移 */
+    --cloud-medium-top: 150px;  /* 中云顶部位置 */
+    
+    --cloud-small-w: 130px;     /* 小云宽度 */
+    --cloud-small-right: 100px; /* 小云右偏移 */
+    --cloud-small-top: 50px;    /* 小云顶部位置 */
+
+    /* 星星系统 */
+    --star-size: 80px;         /* 星星尺寸 */
+    --star-right: 0px;       /* 星星右偏移 */
+    --star-top: 55px;         /* 星星顶部位置 */
+    --bigstar-size: 170px;
+    --bigstar-right: 625px;
+    --bigstar-left: 1350px;
+    --bigstar-top: 1070px;
+
+    /*公告板*/
+    --ggb-size: 150px;
+
+    /* 公告板系统 */
+    --board-spacing: 50px;     /* 公告板间距 */
+    --board-width: 240px;      /* 公告板宽度 */
+    --board-height: 380px;     /* 公告板高度 */
+    
+    /* 底部装饰 */
+    --lamp-width: 120px;       /* 路灯宽度 */
+    --lamp-height: 390px;
+    --flower-width: 150px;      /* 花朵宽度 */
+    --flower-height: 150px
+}
+
+/* ================= 固定样式 ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #EEDBB1;
+    min-height: 100vh;
+    position: relative;
+}
+
+.container {
+    width: var(--container-width);
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+/* 页眉样式 */
+.header {
+    position: relative;
+    height: var(--header-height);
+}
+
+.deco-group {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+}
+
+/* 主标题 */
+.main-title {
+    position: absolute;
+    left: var(--title-left);
+    top: var(--title-top);
+    width: var(--title-width);
+    z-index: 2;
+}
+
+/* 云朵通用样式 */
+.cloud {
+    position: absolute;
+    height: auto;
+    animation: float 4s ease-in-out infinite;
+}
+
+.cloud-large {
+    width: var(--cloud-large-w);
+    right: var(--cloud-large-right);
+    top: var(--cloud-large-top);
+}
+
+.cloud-medium {
+    width: var(--cloud-medium-w);
+    right: var(--cloud-medium-right);
+    top: var(--cloud-medium-top);
+}
+
+.cloud-small {
+    width: var(--cloud-small-w);
+    right: var(--cloud-small-right);
+    top: var(--cloud-small-top);
+}
+
+/* 星星样式 */
+.star {
+    width: var(--star-size);
+    position: absolute;
+    right: var(--star-right);
+    top: var(--star-top);
+    animation: twinkle 2s infinite;
+}
+
+
+.board-heading {
+    display: fixed;                /* 启用弹性布局 */
+    justify-content: center;
+    gap: 50px;                   /*图片间距（现代浏览器支持） */
+    padding-top: 190px;
+    padding-bottom: 20px;    
+    padding-left: 300px;
+    padding-right: 100px;
+}
+
+.char1 {
+    /* display: fixed; */
+    width: 200px;
+    gap: 50px;
+    left: 100px;
+    padding-right: 0px;
+    object-fit: cover;          /* 保持图片比例 */
+} 
+.char2 {
+    /* display: fixed; */
+    width: 180px;
+    gap: 50px;
+    justify-content: center;
+    object-fit: cover;          /* 保持图片比例 */
+} 
+.char3 {
+    /* display: fixed; */
+    width: 175px;
+    gap: 50px;
+    justify-content: center;
+    object-fit: cover;          /* 保持图片比例 */
+} 
+
+.corner-sign {
+    position: relative;
+    justify-content: center;
+    height: 90px;
+    top: 0px;
+    right: 0px;
+}
+
+/* 公告板布局 */
+.board-container {
+    display: flex;
+    justify-content: center;
+    gap: var(--board-spacing);
+    padding-top: 10px;
+}
+
+.board {
+    position: relative;
+    width: var(--board-width);
+    height: var(--board-height);
+    left: 25px;
+}
+
+.board-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.board-content {
+    position: absolute;
+    width: 60%;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+}
+
+.lamp { 
+    position: relative;
+    width: var(--lamp-width);
+    height: var(--lamp-height);
+    top: 0px;
+    left: 20px;
+}
+.flower { 
+    position: relative;
+    width: var(--flower-width); 
+    height: var(--flower-height);
+    top: 230px;
+    right: 0px;
+}
+
+/*产品页*/
+.chanPin {
+    display: absolute;                /* 启用弹性布局 */
+    justify-content: center;
+    gap: 50px;                   /*图片间距（现代浏览器支持） */
+    padding-top: 30px;
+    padding-bottom: 20px;    
+    /* padding-left: 280px;
+    padding-right: 100px; */
+}
+
+
+.chanpinchar1 {
+    display: absolute;
+    justify-content: center;
+    transform: translateX(430px); /* 从中心向右偏移 */
+    width: 160px;
+    height: 200px;
+}
+
+.chanpinchar2 {
+    justify-content: center;
+    object-fit: cover; 
+    transform: translateX(500px); /* 从中心向右偏移 */
+    width: 160px;
+    height: 200px;
+}
+
+.bigleftstar {
+    position: absolute;
+    width: 180px;
+    transform: translateX(180px); /* 从中心向右偏移 */
+    top: 1100px;
+    animation: twinkle 2s infinite;
+}
+
+.bigrightstar {
+    position: absolute;
+    width: 180px;
+    transform: translateX(580px); /* 从中心向右偏移 */
+    top: 1100px;
+    animation: twinkle 2s infinite;
+}
+
+.chanpinboard {
+    display: absolute;                /* 启用弹性布局 */
+    justify-content: center;
+    gap: 50px;                   /*图片间距（现代浏览器支持） */
+    padding-top: 20px;
+    padding-bottom: 20px;    
+}
+
+.pboard1 {
+    position: relative;
+    width: 550px;
+    height: 280px;
+    left: 60px;
+}
+
+.pboard-bg1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.download1 {
+    position: absolute;
+    width: 13%;
+    right: 22%;
+    bottom: 17%;
+}
+
+.knowing1 {
+    position: absolute;
+    width: 12%;
+    right: 10%;
+    bottom: 17%;
+}
+
+.pboard2 {
+    position: relative;
+    width: 550px;
+    height: 280px;
+    left: 600px;
+}
+
+.pboard-bg2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.download2 {
+    position: absolute;
+    width: 13%;
+    right: 22%;
+    bottom: 17%;
+}
+
+.knowing2 {
+    position: absolute;
+    width: 12%;
+    right: 10%;
+    bottom: 17%;
+}
+
+.pboard3 {
+    position: relative;
+    width: 550px;
+    height: 280px;
+    left: 60px;
+}
+
+.pboard-bg3 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.download3 {
+    position: absolute;
+    width: 13%;
+    right: 22%;
+    bottom: 17%;
+}
+
+.knowing3 {
+    position: absolute;
+    width: 12%;
+    right: 10%;
+    bottom: 17%;
+}
+
+.flower2 {
+    position: absolute;
+    width: 200px;
+    top: 1390px;
+    transform: translateX(750px); /* 从中心向右偏移 */
+}
+
+.grass {
+    position: absolute;
+    width: 200px;
+    top: 1680px;
+    transform: translateX(270px); /* 从中心向右偏移 */
+}
+
+.KK2 {
+    position: absolute;
+    width: 280px;
+    top: 2000px;
+    transform: translateX(700px); /* 从中心向右偏移 */
+}
+
+/*留言板*/
+.liuyan {
+    display: absolute;                /* 启用弹性布局 */
+    justify-content: center;
+    gap: 50px;                   /*图片间距（现代浏览器支持） */
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.liuyan1 {
+    position: absolute;
+    object-fit: cover; 
+    transform: translateX(340px); /* 从中心向右偏移 */
+    top: 2230px;
+    width: 130px;
+    height: 200px;
+}
+
+.liuyan2 {
+    position: absolute;
+    object-fit: cover; 
+    transform: translateX(580px); /* 从中心向右偏移 */
+    width: 130px;
+    top: 2220px;
+    height: 200px;
+}
+
+.liuyan3 {
+    position: absolute;
+    object-fit: cover; 
+    transform: translateX(795px); /* 从中心向右偏移 */
+    width: 185px;
+    height: 200px;
+    top: 2230px;
+}
+
+.liuyun-big {
+    position: absolute;
+    width: 300px;
+    top: 2400px;
+    transform: translateX(890px); /* 从中心向右偏移 */
+    animation: twinkle 2s infinite;
+}
+
+.liuyun-middle {
+    position: absolute;
+    width: 220px;
+    top: 2330px;
+    transform: translateX(1160px); /* 从中心向右偏移 */
+    animation: twinkle 2s infinite;
+}
+
+.liuyun-small {
+    position: absolute;
+    width: 190px;
+    top: 2230px;
+    transform: translateX(1050px); /* 从中心向右偏移 */
+    animation: twinkle 2s infinite;
+}
+
+.tree {
+    position: absolute;
+    width: 400px;
+    top: 2600px;
+    transform: translateX(800px); /* 从中心向右偏移 */
+}
+
+.flower3 {
+    position: absolute;
+    width: 170px;
+    top: 2875px;
+    transform: translateX(1190px); /* 从中心向右偏移 */
+}
+
+.liuyanban {
+    position: relative;
+    width: 700px;
+    height: 530px;
+    left: 60px;
+    top: 330px;
+}
+
+.liuyanban-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.morenliuyan {
+    position: absolute;
+    width: 55%;
+    left: 14%;
+    top: 15%;
+}
+
+.xiewanle {
+    position: absolute;
+    width: 15%;
+    right: 6%;
+    bottom: 45%;
+}
+
+/*关于作者*/
+
+.author {
+    display: absolute;                /* 启用弹性布局 */
+    justify-content: center;
+    gap: 50px;                   /*图片间距（现代浏览器支持） */
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.str1 {
+    position: absolute;
+    object-fit: cover; 
+    transform: translateX(280px); /* 从中心向右偏移 */
+    top: 3120px;
+    width: 160px;
+    height: 200px;
+}
+
+.str2 {
+    position: absolute;
+    object-fit: cover; 
+    transform: translateX(500px); /* 从中心向右偏移 */
+    top: 3120px;
+    width: 160px;
+    height: 200px;
+}
+.str3 {
+    position: absolute;
+    object-fit: cover; 
+    transform: translateX(700px); /* 从中心向右偏移 */
+    top: 3110px;
+    width: 170px;
+    height: 220px;
+}
+.str4 {
+    position: absolute;
+    object-fit: cover; 
+    transform: translateX(930px); /* 从中心向右偏移 */
+    top: 3100px;
+    width: 160px;
+    height: 220px;
+}
+
+.me {
+    position: absolute;
+    width: 300px;
+    top: 3350px;
+    transform: translateX(0px); /* 从中心向右偏移 */
+}
+
+.wechat {
+    position: absolute;
+    width: 100px;
+    top: 3830px;
+    transform: translateX(160px); /* 从中心向右偏移 */
+}
+
+.github {
+    position: absolute;
+    width: 100px;
+    top: 3970px;
+    transform: translateX(160px); /* 从中心向右偏移 */
+}
+
+.connect {
+    position: absolute;
+    width: 250px;
+    top: 3830px;
+    transform: translateX(300px); /* 从中心向右偏移 */
+}
+
+.gaincode {
+    position: absolute;
+    width: 250px;
+    top: 3990px;
+    transform: translateX(300px); /* 从中心向右偏移 */
+}
+
+.puppy {
+    position: absolute;
+    width: 340px;
+    top: 3760px;
+    transform: translateX(860px); /* 从中心向右偏移 */
+}
+
+.doudou {
+    position: absolute;
+    width: 250px;
+    top: 3650px;
+    transform: translateX(1050px); /* 从中心向右偏移 */
+}
+
+.good {
+    position: absolute;
+    width: 250px;
+    top: 3700px;
+    transform: translateX(750px); /* 从中心向右偏移 */
+}
+
+.money {
+    position: absolute;
+    width: 400px;
+    top: 4140px;
+    transform: translateX(850px); /* 从中心向右偏移 */
+}
+
+.intro1 {
+    position: absolute;
+    width: 500px;
+    top: 3360px;
+    transform: translateX(320px); /* 从中心向右偏移 */
+}
+
+.intro2 {
+    position: absolute;
+    width: 500px;
+    top: 3360px;
+    transform: translateX(820px); /* 从中心向右偏移 */
+}
+
+.intro3 {
+    position: absolute;
+    width: 500px;
+    top: 3545px;
+    transform: translateX(810px); /* 从中心向右偏移 */
+}
+
+
+/* 动画定义 */
+@keyframes float {
+    0%, 100% { transform: translate(0,0) rotate(0deg); }
+    50% { transform: translate(5px,-8px) rotate(2deg); }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.3; }
+}
+
+/* 页面加载动画 */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #EEDBB1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    transition: opacity 0.5s ease;
+}
+
+.loader {
+    width: 80px;
+    height: 80px;
+    border: 8px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top: 8px solid #4CAF50;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
